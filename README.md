@@ -1,14 +1,12 @@
 # Modular Cache Eviction Simulator (LRU & LFU)
 
-A modular, high-performance C++ implementation of **LRU (Least Recently Used)** and **LFU (Least Frequently Used)** caching policies, demonstrating different underlying data structure tradeoffs between $O(1)$ and $O(\log N)$ operations.
+A modular C++ implementation of **LRU (Least Recently Used)** and **LFU (Least Frequently Used)** caching policies, demonstrating different data structure tradeoffs between $O(1)$ and $O(\log N)$ operations.
 
 ---
 
 ## Project Overview
 
-This project provides an interactive Command-Line Interface (CLI) tool allowing users to test, compare, and visualize key caching mechanisms under custom capacities and interactive workloads. 
-
-The architecture follows strict Object-Oriented Programming (OOP) principles using an abstract base class (`Cache.h`) to achieve modular polymorphism across all policy implementations.
+This project provides an interactive Command-Line Interface (CLI) tool allowing users to test, compare, and visualize key caching mechanisms under custom capacities. 
 
 ---
 
