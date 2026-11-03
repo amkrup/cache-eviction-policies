@@ -5,9 +5,7 @@
 using namespace std;
 
 // LRU cache using a hash table + a min-heap.
-// Every item has a "time" (goes up on each use). The heap keeps the item with the
-// smallest time (least recently used) on top, so it is the one removed when full.
-// The hash table (pos) remembers where each key sits in the heap array.
+
 class LRUHeap : public Cache {
     struct Node {
         int key;
@@ -17,10 +15,10 @@ class LRUHeap : public Cache {
 
     int capacity;
     long long timer;                // goes up by 1 on every use
-    vector<Node> heap;              // the min-heap, stored as an array
-    unordered_map<int, int> pos;    // key -> index in heap
+    vector<Node> heap;              
+    unordered_map<int, int> pos;    
 
-    // Swap two nodes in the heap and update their positions in the table.
+    
     void swapNodes(int i, int j) {
         swap(heap[i], heap[j]);
         pos[heap[i].key] = i;
@@ -69,7 +67,7 @@ class LRUHeap : public Cache {
         siftDown(0);
     }
 
-    // Mark the node at index i as just used. Its time becomes the largest, so it can only need to move down.
+    
     void updateTime(int i) {
         timer++;
         heap[i].time = timer;
@@ -83,7 +81,7 @@ public:
     }
 
     int get(int key) {
-        if (pos.find(key) == pos.end()) return -1;   // not found
+        if (pos.find(key) == pos.end()) return -1;  
         int i = pos[key];
         int value = heap[i].value;
         updateTime(i);
@@ -100,7 +98,7 @@ public:
             return;
         }
 
-        if ((int)heap.size() == capacity) removeMin();   // remove least recently used
+        if ((int)heap.size() == capacity) removeMin();   
 
         timer++;
         Node n = {key, value, timer};
